@@ -145,7 +145,7 @@ bot.on('callback_query', async (query) => {
                         inline_keyboard: [
                             [{ text: '📥 Download current ep', callback_data: `download_episode_${nextEpisode.episodeId}` }],
                             [{ text: '➡️ Next Page', callback_data: 'next_page' },{ text: '➡️ Next', callback_data: 'next_episode' }],
-                            [{ text: '📺 Gogoanime info', url: nextEpisode.url }]
+                            [{ text: '📺 anime info', url: nextEpisode.url }]
                         ]
                     }
                 });
@@ -164,7 +164,7 @@ bot.on('callback_query', async (query) => {
                             inline_keyboard: [
                                 [{ text: '📥 Download current ep', callback_data: `download_episode_${episode.episodeId}` }],
                                 [{ text: '➡️ Next Page', callback_data: 'next_page' },{ text: '➡️ Next', callback_data: 'next_episode' }],
-                                [{ text: '📺 Gogoanime info', url: episode.url }]
+                                [{ text: '📺 anime info', url: episode.url }]
                             ]
                         }
                     });
@@ -193,9 +193,6 @@ bot.on('callback_query', async (query) => {
         if (data.startsWith('download_episode_')) {
             const episodeId = data.split('_')[2];
             const animeDetails = await getAnimeserver(episodeId);
-            const randomIndex = Math.floor(Math.random() * animeDetails.length);
-            const Url = 'https://gredirect.info/download.php?url=aHR0cHM6LyAdeqwrwedffryretgsdFrsftrsvfsfsr96YmNhanAdrefsdsdfwerFrefdsfrersfdsrfer36343534Zyc3ViLmFuZjU5OC5jb20vdXNlcjEzNDIvYjZiYWJkZjczM2MyYzRkNzFhNGU0NDRhNjExZTM4MmYvRVAuNDgudjAuMTcxNDgwMDAwNi4zNjBwLm1wND90b2tlbj1zbWhkeFV1S3ZtRC1PaHJYVkpJdTdRJmV4cGlyZXM9MTcxNDgxNjM0MiZpZD0yMjQ5Mzg='
-            console.log(Url)
             bot.sendVideo(chatId, Url).then(() => {
                 bot.sendMessage(chatId, `Download the video [here](${jsonData.download})`, { parse_mode: 'Markdown' });
             }).catch(error => {
