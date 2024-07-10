@@ -1,7 +1,7 @@
 const TelegramBot = require("node-telegram-bot-api");
 const mongoose = require("mongoose");
 const config = require("./config");
-const client = require("./lib/bot/lclient");
+const client = require("./lib/bot/client");
 
 mongoose.connect(config.MONGO_URL, {
   useNewUrlParser: true,
